@@ -7,10 +7,10 @@
     <title>MyCity WEB</title>
 </head>
 <body>
-    <div id="glowna">
+    <div id="faq">
         <div class="headerinformationrules">
             <div class="headerinfo">
-                <a href="#faq" onclick="showDiv('glowna')"><b>FAQ</b></a>
+                <a href="#faq" onclick="showDiv('faq')"><b>FAQ</b></a>
                 <a href="#regulamin" onclick="showDiv('regulamin')"><b>REGULAMIN</b></a>
                 <a href="YOUR DISCORD LINK"><b>DISCORD</b></a>
             </div>
@@ -149,26 +149,14 @@
    
     <script src="script.js"></script>
     <script>
-        var currentDiv = localStorage.getItem('currentDiv') || 'glowna';
-
         function showDiv(id) {
-            document.getElementById('glowna').style.display = (id === 'glowna') ? 'block' : 'none';
-            document.getElementById('regulamin').style.display = (id === 'regulamin') ? 'block' : 'none';
-
-            currentDiv = id;
-            localStorage.setItem('currentDiv', currentDiv);
-        }
-
-        window.onload = function() {
-            if (currentDiv === 'regulamin') {
-                var divs = document.getElementById('regulamin').getElementsByTagName('div');
-                for (var i = 0; i < divs.length; i++) {
-                    divs[i].style.display = 'block';
-                }
-            } else {
-                showDiv(currentDiv);
+            var divsToHide = document.querySelectorAll('.content');
+            for (var i = 0; i < divsToHide.length; i++) {
+                divsToHide[i].style.display = 'none';
             }
-        };
+
+            document.getElementById(id).style.display = 'block';
+        }
     </script>
 </body>
 </html>
